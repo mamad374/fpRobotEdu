@@ -86,6 +86,12 @@
                         <p>Kategori</p>
                     </a>
                 </li>
+                <li>
+                    <a href="<?php echo base_url()."index.php/BackLayar/subscribeShow"?>">
+                        <i class="ti-email"></i>
+                        <p>Subscribe</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>

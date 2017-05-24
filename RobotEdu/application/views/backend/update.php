@@ -10,14 +10,17 @@
 	<title>Dashboard RoboEdu</title>
 	<!-- tinymce -->
 	<script src="<?php echo base_url()."assets/js/tinymce/tinymce.min.js"?>"></script>
-    <script>tinymce.init({ selector: 'textarea',
+    <script>tinymce.init({ selector: 'textarea#isi',
             menubar: false,
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table contextmenu paste code'
+                'insertdatetime media table contextmenu paste responsivefilemanager code'
             ],
-            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | responsivefilemanager ',
+            external_filemanager_path: "<?php echo base_url()."filemanager/"?>" ,
+            filemanager_title:"Responsive Filemanager" ,
+            external_plugins: { "filemanager" : "<?php echo base_url()."filemanager/plugin.min.js"?>"}
         });</script>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -92,6 +95,12 @@
                         <p>Kategori</p>
                     </a>
                 </li>
+                <li>
+                    <a href="<?php echo base_url()."index.php/BackLayar/subscribeShow"?>">
+                        <i class="ti-email"></i>
+                        <p>Subscribe</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>
@@ -164,15 +173,21 @@
 										<td>: </td>
 										<td><input type="file" name="image"></td>
 									 </tr>
+                                    <tr>
+                                        <td><label>Sinopsis</label></td>
+                                        <td>: </td>
+                                        <td><input name="Sinopsis" class="form-control border-input" value="<?php echo $Sinopsis ?>"></input></td>
+                                    </tr>
 									 <tr>
                                          <td><label>Isi Artikel</label></td>
 										<td>: </td>
 										<td><textarea name="Artikel" id="isi" <?php echo $Isi ?></textarea></td>
 									 </tr>
 									 <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td><input type="submit" name="btnSubmit" value="Update" class="btn btn-success"/></td>	
+                                         <td></td>
+                                         <td></td>
+                                         <td><input type="submit" name="btnSubmit" value="Update" class="btn btn-success"/></td>
+
                                         <td><a class="btn btn-danger" href="<?php echo base_url()."index.php/BackLayar/post"?>">Cancel</a></td> 
 									 </tr>
 								</table>

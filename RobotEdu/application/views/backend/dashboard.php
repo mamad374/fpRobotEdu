@@ -10,15 +10,21 @@
 	<title>Dashboard RoboEdu</title>
 	<!-- tinymce -->
 	<script src="<?php echo base_url()."assets/js/tinymce/tinymce.min.js"?>"></script>
-  	<script>tinymce.init({ selector: 'textarea',
+    <script>tinymce.init({ selector: 'textarea#Mce',
             menubar: false,
+            relative_urls: false,
+            remove_script_host:false,
+
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table contextmenu paste code'
+                'insertdatetime media table contextmenu paste responsivefilemanager code'
             ],
-            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
-  	});</script>
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | responsivefilemanager ',
+            external_filemanager_path: "<?php echo base_url()."filemanager/"?>" ,
+            filemanager_title:"Responsive Filemanager" ,
+            external_plugins: { "filemanager" : "<?php echo base_url()."filemanager/plugin.min.js"?>"}
+        });</script>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -77,6 +83,12 @@
                     <a href="<?php echo base_url()."index.php/BackLayar/kategori"?>">
                         <i class="ti-flag-alt"></i>
                         <p>Kategori</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url()."index.php/BackLayar/subscribeShow"?>">
+                        <i class="ti-email"></i>
+                        <p>Subscribe</p>
                     </a>
                 </li>
             </ul>
@@ -158,10 +170,15 @@
 										<td>: </td>
 										<td><input type="file" name="image"></td>
 									 </tr>
+                                    <tr>
+                                        <td><label>Sinopsis</label></td>
+                                        <td>: </td>
+                                        <td><input name="Sinopsis"  value="" class="form-control border-input"></td>
+                                    </tr>
 									 <tr>
                                          <td><label>Isi Artikel</label></td>
 										<td>: </td>
-										<td><textarea name="Artikel"></textarea></td> 
+										<td><textarea name="Artikel" id="Mce"></textarea></td>
 									 </tr>
 									 <tr>
                                         <td></td>
@@ -235,7 +252,6 @@
     	$(document).ready(function(){
 
         	demo.initChartist();
-		  		
         	$.notify({
             	icon: 'ti-user',
             	message: "Selamat Datang di <b>Dashboard RobotEdu</b>"
